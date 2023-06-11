@@ -1,30 +1,58 @@
-const categoryModel = require("../models/CategoryModel");
+const CategoryModel = require("../models/CategoryModel");
 
 const createCategory = async (req, res) => {
   try {
-    const category = await categoryModel.create(req.body);
+    const category = await CategoryModel.create(req.body);
     res.status(200).json(category);
   } catch (err) {
     console.log(err);
   }
 };
 
-const findCategoryById = async (req, res) => {
+const getCategoryList = async (req, res) => {
   try {
-    const category = await categoryModel.findById(req.params.id);
-    res.status(200).json(category);
+    const categoryList = await CategoryModel.find();
+    res.status(200).json(categoryList);
   } catch (err) {
     console.log(err);
   }
 };
 
-const findAllCategories = async (req, res) => {
+const getCategoryById = async (req, res) => {
   try {
-    const category = await categoryModel.find({});
+    const category = await CategoryModel.findById(req.params.id);
     res.status(200).json(category);
   } catch (err) {
     console.log(err);
   }
 };
 
-module.exports = { createCategory, findCategoryById, findAllCategories };
+const deleteCategoryById = async (req, res) => {
+  try {
+    const category = await CategoryModel.findByIdAndDelete(req.params.id);
+    res.status(200).json(category);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+const updateCategoryById = async (req, res) => {
+  try {
+    const category = await CategoryModel.findByIdAndUpdate(
+      req.params.id,
+      { $set: req.body },
+      { new: true }
+    );
+    res.status(200).json(category);
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+module.exports = {
+  createCategory,
+  getCategoryList,
+  getCategoryById,
+  deleteCategoryById,
+  updateCategoryById,
+};

@@ -3,19 +3,15 @@ const mongoose = require("mongoose");
 const dotEnv = require("dotenv");
 const cors = require("cors");
 
-const categoryRouter = require("./routes/CategoryRouter");
+const CategoryRouter = require("./routes/CategoryRouter");
+const ProductRouter = require("./routes/ProductRouter");
 
 dotEnv.config(); // use to load the variables in the env file
 
 const app = express();
 app.use(express.json()); // automatically parse all incoming request into json format
 
-app.use(cors()); // use to enable cross origin resource sharing, transmitting http headers
-
-app.get("/sample", (req, res) => {
-  res.send("sample");
-  console.log("sample");
-});
+app.use(cors("*")); // use to enable cross origin resource sharing, transmitting http headers
 
 //mongoose connection here
 mongoose.set("strictQuery", false);
@@ -28,9 +24,12 @@ const connect = async () => {
   }
 };
 
-app.use("/api/category", categoryRouter);
+app.use("/api/category", CategoryRouter);
+app.use("/api/product", ProductRouter);
 
-app.listen(5000, () => {
+const PORT = 5001;
+
+app.listen(PORT, () => {
   connect();
-  console.log("server is listening to port 5000");
+  console.log(`server is listening to port ${PORT}`);
 });
