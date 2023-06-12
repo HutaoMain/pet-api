@@ -7,6 +7,8 @@ const CategoryRouter = require("./routes/CategoryRouter");
 const ProductRouter = require("./routes/ProductRouter");
 const PetRouter = require("./routes/PetRouter");
 const StaffRouter = require("./routes/StaffRouter");
+const AppointmentRouter = require("./routes/AppointmentRouter");
+const MedicalHistoryRouter = require("./routes/MedicalHistoryRouter");
 
 dotEnv.config(); // use to load the variables in the env file
 
@@ -30,6 +32,8 @@ app.use("/api/category", CategoryRouter);
 app.use("/api/product", ProductRouter);
 app.use("/api/pet", PetRouter);
 app.use("/api/staff", StaffRouter);
+app.use("/api/appointment", AppointmentRouter);
+app.use("/api/medicalHistory", AppointmentRouter);
 
 const PORT = 5001;
 
