@@ -13,4 +13,9 @@ router.put("/update/:id", MedicalHistoryController.updateMedicalHistoryById);
 
 router.get("/petId/:id", MedicalHistoryController.getMedicalHistoryListByPetId);
 
+router.get(
+  "/monthly/data",
+  MedicalHistoryController.getMonthlyAppointmentCounts
+);
+
 module.exports = router;

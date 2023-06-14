@@ -26,6 +26,10 @@ const MedicalHistorySchema = new mongoose.Schema(
       type: String,
       required: true,
     },
+    appointmentDate: {
+      type: String,
+      required: true,
+    },
   },
   {
     timestamps: true,
