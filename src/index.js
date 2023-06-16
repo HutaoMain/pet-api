@@ -17,7 +17,7 @@ dotEnv.config(); // use to load the variables in the env file
 const app = express();
 app.use(express.json()); // automatically parse all incoming request into json format
 
-app.use(cors("https://pet-shop-management-system.vercel.app")); // use to enable cross origin resource sharing, transmitting http headers
+app.use(cors("*")); // use to enable cross origin resource sharing, transmitting http headers
 
 //mongoose connection here
 mongoose.set("strictQuery", false);
