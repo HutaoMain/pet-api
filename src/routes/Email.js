@@ -2,7 +2,7 @@ const nodemailer = require("nodemailer");
 const router = require("express").Router();
 
 router.post("/send", async (req, res) => {
-  let { email } = req.body;
+  let { recipients } = req.body;
   let { emailBody } = req.body;
   let { subject } = req.body;
 
@@ -20,7 +20,7 @@ router.post("/send", async (req, res) => {
 
     const mailOptions = {
       from: process.env.MAIL_FROM,
-      to: email,
+      to: recipients.join(","),
       subject: subject,
       html: `<div className="email" style="
       border: 1px solid  black; 

@@ -39,9 +39,9 @@ app.use("/api/medicalHistory", MedicalHistoryRouter);
 app.use("/api/user", UserRouter);
 app.use("/api/email", Email);
 
-const PORT = 5001;
+const port = process.env.PORT || 5000;
 
-app.listen(PORT, () => {
+app.listen(port, () => {
   connect();
-  console.log(`server is listening to port ${PORT}`);
+  console.log(`server is listening to port ${port}`);
 });
